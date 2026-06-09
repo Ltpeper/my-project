@@ -267,64 +267,24 @@
         }
 
         .s1-right {
-            grid-column: 9 / span 4;
+            grid-column: 8 / span 5;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .device-box {
-            width: 210px;
-            height: 210px;
-            background: var(--surface);
-            border-radius: 28px;
-            border: 1.5px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: var(--sp-2);
-            position: relative;
+        .product-img {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.12));
+            animation: floatImg 4s ease-in-out infinite;
         }
 
-        .device-box::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, rgba(84, 9, 255, .35) 0%, transparent 55%);
-            pointer-events: none;
-        }
-
-        .d-icon {
-            width: 68px;
-            height: 68px;
-            background: var(--accent);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .d-icon svg {
-            width: 36px;
-            height: 36px;
-        }
-
-        .d-name {
-            font-size: var(--t-sm);
-            font-weight: 800;
-            color: var(--ink-1);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .d-sub {
-            font-size: var(--t-xs);
-            color: var(--ink-3);
-            font-weight: 500;
-            text-align: center;
-            padding: 0 var(--sp-3);
+        @keyframes floatImg {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* ═══ S2: PROBLEEM ═══ */
@@ -758,23 +718,7 @@
             </div>
         </div>
         <div class="s1-right">
-            <div class="device-box">
-                <div class="d-icon">
-                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 5C18 5 10 11 10 18C10 25 18 31 18 31" stroke="white" stroke-width="2.2" fill="none"
-                            stroke-linecap="round" />
-                        <path d="M18 5C18 5 26 11 26 18C26 25 18 31 18 31" stroke="white" stroke-width="2.2" fill="none"
-                            stroke-linecap="round" />
-                        <circle cx="18" cy="18" r="3.5" fill="white" />
-                        <path d="M5 13C5 13 2.5 15.2 2.5 18C2.5 20.8 5 23 5 23" stroke="white" stroke-width="1.8"
-                            fill="none" stroke-linecap="round" opacity=".55" />
-                        <path d="M31 13C31 13 33.5 15.2 33.5 18C33.5 20.8 31 23 31 23" stroke="white" stroke-width="1.8"
-                            fill="none" stroke-linecap="round" opacity=".55" />
-                    </svg>
-                </div>
-                <span class="d-name">Oraltec One</span>
-                <span class="d-sub">45 kHz ultrasoon · UV-C · 5 min</span>
-            </div>
+            <img src="oraltec-one.png" alt="Oraltec One ultrasone alignercleaner" class="product-img">
         </div>
         <div class="wm" aria-hidden="true">01</div>
     </section>
