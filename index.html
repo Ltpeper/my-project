@@ -65,7 +65,6 @@
             height: 100vh;
         }
 
-        /* SLIDE BASE */
         .slide {
             width: 100vw;
             height: 100vh;
@@ -80,7 +79,6 @@
             align-content: center;
         }
 
-        /* TYPE */
         .eyebrow {
             font-size: var(--t-sm);
             font-weight: 700;
@@ -121,7 +119,6 @@
             letter-spacing: 0.03em;
         }
 
-        /* HELPERS */
         .accent-bar {
             width: 40px;
             height: 4px;
@@ -151,7 +148,6 @@
             stroke-width: 2.5;
         }
 
-        /* CHROME */
         .nav-dots {
             position: fixed;
             right: 28px;
@@ -216,7 +212,6 @@
             color: var(--accent);
         }
 
-        /* BG WATERMARK */
         .wm {
             position: absolute;
             right: calc(var(--safe) - 24px);
@@ -235,7 +230,6 @@
             z-index: 1;
         }
 
-        /* ═══ S1: HERO ═══ */
         .s1-left {
             grid-column: 1 / span 6;
             display: flex;
@@ -275,7 +269,6 @@
             position: relative;
         }
 
-        /* Glow blob achter product */
         .s1-right::before {
             content: '';
             position: absolute;
@@ -288,20 +281,10 @@
         }
 
         @keyframes pulseGlow {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.08);
-                opacity: 0.7;
-            }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.7; }
         }
 
-        /* Decoratieve ring */
         .s1-right::after {
             content: '';
             position: absolute;
@@ -330,7 +313,6 @@
             animation-play-state: paused;
         }
 
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -383,18 +365,10 @@
         }
 
         @keyframes floatImg {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(-1deg);
-            }
-
-            50% {
-                transform: translateY(-14px) rotate(1deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-14px) rotate(1deg); }
         }
 
-        /* Spec badges */
         .spec-badge {
             position: absolute;
             z-index: 2;
@@ -421,48 +395,17 @@
             flex-shrink: 0;
         }
 
-        .spec-badge-1 {
-            top: 18%;
-            right: 2%;
-            animation: badgeFloat 4s ease-in-out infinite;
-        }
-
-        .spec-badge-2 {
-            bottom: 28%;
-            right: -2%;
-            animation: badgeFloat 4s ease-in-out infinite 0.8s;
-        }
-
-        .spec-badge-3 {
-            bottom: 18%;
-            left: 4%;
-            animation: badgeFloat 4s ease-in-out infinite 1.6s;
-        }
+        .spec-badge-1 { top: 18%; right: 2%; animation: badgeFloat 4s ease-in-out infinite; }
+        .spec-badge-2 { bottom: 28%; right: -2%; animation: badgeFloat 4s ease-in-out infinite 0.8s; }
+        .spec-badge-3 { bottom: 18%; left: 4%; animation: badgeFloat 4s ease-in-out infinite 1.6s; }
 
         @keyframes badgeFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
-        /* ═══ S2: PROBLEEM ═══ */
-        .s2-head {
-            grid-column: 1 / span 12;
-            margin-bottom: var(--sp-12);
-        }
-
-        .s2-cards {
-            grid-column: 1 / span 12;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--sp-4);
-        }
+        .s2-head { grid-column: 1 / span 12; margin-bottom: var(--sp-12); }
+        .s2-cards { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
 
         .prob-card {
             padding: var(--sp-6) var(--sp-4);
@@ -474,99 +417,29 @@
             background: var(--bg);
         }
 
-        .prob-card .top-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--border);
-        }
+        .prob-card .top-line { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--border); }
+        .prob-card.hl .top-line { background: var(--accent); }
+        .prob-card .pnum { font-size: var(--t-2xl); font-weight: 800; color: var(--ink-1); line-height: 1; }
+        .prob-card.hl .pnum { color: var(--accent); }
+        .prob-card .ptitle { font-size: var(--t-base); font-weight: 600; color: var(--ink-1); }
+        .prob-card .psub { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; max-width: 30ch; }
 
-        .prob-card.hl .top-line {
-            background: var(--accent);
-        }
-
-        .prob-card .pnum {
-            font-size: var(--t-2xl);
-            font-weight: 800;
-            color: var(--ink-1);
-            line-height: 1;
-        }
-
-        .prob-card.hl .pnum {
-            color: var(--accent);
-        }
-
-        .prob-card .ptitle {
-            font-size: var(--t-base);
-            font-weight: 600;
-            color: var(--ink-1);
-        }
-
-        .prob-card .psub {
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            line-height: 1.5;
-            max-width: 30ch;
-        }
-
-        /* ═══ S3: OPLOSSING ═══ */
-        .s3-left {
-            grid-column: 1 / span 5;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-3);
-            justify-content: center;
-        }
-
-        .s3-right {
-            grid-column: 7 / span 6;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-3);
-            justify-content: center;
-        }
+        .s3-left { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: var(--sp-3); justify-content: center; }
+        .s3-right { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: var(--sp-3); justify-content: center; }
 
         .how-step {
             display: flex;
             align-items: flex-start;
             gap: var(--sp-2);
-            padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-3);
+            padding: var(--sp-3);
             border-left: 2px solid var(--border);
         }
 
-        .how-step.active {
-            border-left-color: var(--accent);
-            background: var(--surface);
-        }
-
-        .snum {
-            font-size: var(--t-md);
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-            min-width: 28px;
-        }
-
-        .stxt {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .stitle {
-            font-size: var(--t-base);
-            font-weight: 700;
-            color: var(--ink-1);
-        }
-
-        .sdesc {
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            line-height: 1.5;
-            max-width: 34ch;
-        }
+        .how-step.active { border-left-color: var(--accent); background: var(--surface); }
+        .snum { font-size: var(--t-md); font-weight: 800; color: var(--accent); line-height: 1; min-width: 28px; }
+        .stxt { display: flex; flex-direction: column; gap: 4px; }
+        .stitle { font-size: var(--t-base); font-weight: 700; color: var(--ink-1); }
+        .sdesc { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; max-width: 34ch; }
 
         .tech-badge {
             display: inline-flex;
@@ -581,269 +454,53 @@
             width: fit-content;
         }
 
-        /* ═══ S4: BUSINESS CASE ═══ */
-        .s4-head {
-            grid-column: 1 / span 12;
-            margin-bottom: var(--sp-6);
-        }
+        .s4-head { grid-column: 1 / span 12; margin-bottom: var(--sp-6); }
+        .s4-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); background: var(--border); gap: 1px; }
 
-        .s4-grid {
-            grid-column: 1 / span 12;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border: 1px solid var(--border);
-            background: var(--border);
-            gap: 1px;
-        }
+        .bc-cell { background: var(--bg); padding: var(--sp-6) var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-1); position: relative; }
+        .bc-cell::before { content: attr(data-tier); position: absolute; top: var(--sp-3); right: var(--sp-3); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+        .bc-cell.featured::before { color: var(--accent); }
+        .bc-cell .bnum { font-size: var(--t-2xl); font-weight: 800; color: var(--ink-1); line-height: 1; }
+        .bc-cell .blab { font-size: var(--t-sm); color: var(--ink-2); font-weight: 500; }
+        .bc-cell .bnote { font-size: var(--t-xs); color: var(--ink-3); line-height: 1.4; max-width: 22ch; }
+        .bc-cell.featured .bnum { color: var(--accent); }
 
-        .bc-cell {
-            background: var(--bg);
-            padding: var(--sp-6) var(--sp-4);
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-1);
-            position: relative;
-        }
+        .s4-foot { grid-column: 1 / span 12; margin-top: var(--sp-4); display: flex; align-items: flex-start; gap: var(--sp-2); }
 
-        .bc-cell::before {
-            content: attr(data-tier);
-            position: absolute;
-            top: var(--sp-3);
-            right: var(--sp-3);
-            font-size: var(--t-xs);
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--ink-3);
-        }
+        .i-badge { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 800; color: var(--accent); }
 
-        .bc-cell.featured::before {
-            color: var(--accent);
-        }
+        .s5-left { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: var(--sp-3); justify-content: center; }
+        .s5-right { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: var(--sp-2); justify-content: center; }
 
-        .bc-cell .bnum {
-            font-size: var(--t-2xl);
-            font-weight: 800;
-            color: var(--ink-1);
-            line-height: 1;
-        }
+        .pkg-row { display: flex; align-items: flex-start; gap: var(--sp-2); padding: var(--sp-2) 0; border-bottom: 1px solid var(--border); }
+        .pkg-row:last-child { border-bottom: none; }
+        .pkg-text { font-size: var(--t-base); color: var(--ink-1); font-weight: 500; }
 
-        .bc-cell .blab {
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            font-weight: 500;
-        }
+        .s6-left { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: var(--sp-4); justify-content: center; }
+        .s6-right { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: var(--sp-3); justify-content: center; }
 
-        .bc-cell .bnote {
-            font-size: var(--t-xs);
-            color: var(--ink-3);
-            line-height: 1.4;
-            max-width: 22ch;
-        }
+        .incl-list { display: flex; flex-direction: column; gap: var(--sp-2); }
+        .incl-row { display: flex; align-items: flex-start; gap: var(--sp-2); }
+        .incl-text { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.4; }
 
-        .bc-cell.featured .bnum {
-            color: var(--accent);
-        }
+        .workflow-block { padding: var(--sp-4); border: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; gap: var(--sp-2); }
+        .wf-title { font-size: var(--t-base); font-weight: 700; color: var(--ink-1); }
+        .wf-body { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; max-width: 38ch; }
 
-        .s4-foot {
-            grid-column: 1 / span 12;
-            margin-top: var(--sp-4);
-            display: flex;
-            align-items: flex-start;
-            gap: var(--sp-2);
-        }
+        .s7-left { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: var(--sp-6); }
+        .next-steps { display: flex; flex-direction: column; gap: var(--sp-3); }
 
-        .i-badge {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent-glow);
-            border: 1px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--accent);
-        }
+        .next-row { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3) var(--sp-4); border: 1px solid var(--border); }
+        .next-row.primary { border-color: var(--accent); background: var(--accent-glow); }
+        .nnum { font-size: var(--t-md); font-weight: 800; color: var(--accent); min-width: 32px; line-height: 1; }
+        .ntxt { font-size: var(--t-base); color: var(--ink-1); font-weight: 500; }
+        .nsub { font-size: var(--t-sm); color: var(--ink-3); margin-top: 2px; }
 
-        /* ═══ S5: PAKKET ═══ */
-        .s5-left {
-            grid-column: 1 / span 5;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-3);
-            justify-content: center;
-        }
-
-        .s5-right {
-            grid-column: 7 / span 6;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-2);
-            justify-content: center;
-        }
-
-        .pkg-row {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--sp-2);
-            padding: var(--sp-2) 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pkg-row:last-child {
-            border-bottom: none;
-        }
-
-        .pkg-text {
-            font-size: var(--t-base);
-            color: var(--ink-1);
-            font-weight: 500;
-        }
-
-        /* ═══ S6: SAMENWERKING ═══ */
-        .s6-left {
-            grid-column: 1 / span 5;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-4);
-            justify-content: center;
-        }
-
-        .s6-right {
-            grid-column: 7 / span 6;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-3);
-            justify-content: center;
-        }
-
-        .incl-list {
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-2);
-        }
-
-        .incl-row {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--sp-2);
-        }
-
-        .incl-text {
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            line-height: 1.4;
-        }
-
-        .workflow-block {
-            padding: var(--sp-4);
-            border: 1px solid var(--border);
-            background: var(--surface);
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-2);
-        }
-
-        .wf-title {
-            font-size: var(--t-base);
-            font-weight: 700;
-            color: var(--ink-1);
-        }
-
-        .wf-body {
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            line-height: 1.5;
-            max-width: 38ch;
-        }
-
-        /* ═══ S7: NEXT STEP ═══ */
-        .s7-left {
-            grid-column: 1 / span 7;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-6);
-        }
-
-        .next-steps {
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-3);
-        }
-
-        .next-row {
-            display: flex;
-            align-items: center;
-            gap: var(--sp-3);
-            padding: var(--sp-3) var(--sp-4);
-            border: 1px solid var(--border);
-        }
-
-        .next-row.primary {
-            border-color: var(--accent);
-            background: var(--accent-glow);
-        }
-
-        .nnum {
-            font-size: var(--t-md);
-            font-weight: 800;
-            color: var(--accent);
-            min-width: 32px;
-            line-height: 1;
-        }
-
-        .ntxt {
-            font-size: var(--t-base);
-            color: var(--ink-1);
-            font-weight: 500;
-        }
-
-        .nsub {
-            font-size: var(--t-sm);
-            color: var(--ink-3);
-            margin-top: 2px;
-        }
-
-        .contact-card {
-            grid-column: 9 / span 4;
-            align-self: center;
-            padding: var(--sp-6);
-            border: 1px solid var(--border);
-            background: var(--surface);
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-4);
-        }
-
-        .cc-row {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .cc-label {
-            font-size: var(--t-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--ink-3);
-        }
-
-        .cc-val {
-            font-size: var(--t-sm);
-            font-weight: 600;
-            color: var(--ink-1);
-        }
-
-        .cc-price {
-            font-size: var(--t-xl);
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-        }
+        .contact-card { grid-column: 9 / span 4; align-self: center; padding: var(--sp-6); border: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; gap: var(--sp-4); }
+        .cc-row { display: flex; flex-direction: column; gap: 4px; }
+        .cc-label { font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); }
+        .cc-val { font-size: var(--t-sm); font-weight: 600; color: var(--ink-1); }
+        .cc-price { font-size: var(--t-xl); font-weight: 800; color: var(--accent); line-height: 1; }
     </style>
 </head>
 
@@ -875,27 +532,16 @@
             <div class="s1-tag">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                     <circle cx="6.5" cy="6.5" r="5.5" stroke="#5409FF" stroke-width="1.5" />
-                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 Premium zorg voor een premium behandeling
             </div>
         </div>
         <div class="s1-right">
-            <img src="oraltec-one.png" alt="Oraltec One ultrasone alignercleaner" class="product-img"
-                onclick="openLightbox()">
-            <div class="spec-badge spec-badge-1">
-                <span class="badge-dot"></span>
-                45 kHz ultrasoon
-            </div>
-            <div class="spec-badge spec-badge-2">
-                <span class="badge-dot"></span>
-                UV-C sterilisatie
-            </div>
-            <div class="spec-badge spec-badge-3">
-                <span class="badge-dot"></span>
-                Klaar in 5 min
-            </div>
+            <img src="oraltec-one.png" alt="Oraltec One ultrasone alignercleaner" class="product-img" onclick="openLightbox()">
+            <div class="spec-badge spec-badge-1"><span class="badge-dot"></span>45 kHz ultrasoon</div>
+            <div class="spec-badge spec-badge-2"><span class="badge-dot"></span>UV-C sterilisatie</div>
+            <div class="spec-badge spec-badge-3"><span class="badge-dot"></span>Klaar in 5 min</div>
         </div>
         <div class="wm" aria-hidden="true">01</div>
     </section>
@@ -912,22 +558,19 @@
                 <div class="top-line"></div>
                 <span class="pnum">Geur &amp; smaak</span>
                 <span class="ptitle">De grootste klacht van patiënten</span>
-                <span class="psub">Speeksel en etensresten veroorzaken vieze geurtjes en smaken, wat de therapietrouw
-                    verlaagt.</span>
+                <span class="psub">Speeksel en etensresten veroorzaken vieze geurtjes en smaken, wat de therapietrouw verlaagt.</span>
             </div>
             <div class="prob-card">
                 <div class="top-line"></div>
                 <span class="pnum">Verkleuring</span>
                 <span class="ptitle">Zichtbaar en niet te verbergen</span>
-                <span class="psub">Verkeerd poetsen veroorzaakt dof, poreus plastic waarin bacteriën zich permanent
-                    nestelen.</span>
+                <span class="psub">Verkeerd poetsen veroorzaakt dof, poreus plastic waarin bacteriën zich permanent nestelen.</span>
             </div>
             <div class="prob-card">
                 <div class="top-line"></div>
                 <span class="pnum">Tandvlees</span>
                 <span class="ptitle">Roodheid en irritatie</span>
-                <span class="psub">Bacteriële biofilm tussen de aligner en het gebit verhoogt de kans op
-                    tandvleesontstekingen aanzienlijk.</span>
+                <span class="psub">Bacteriële biofilm tussen de aligner en het gebit verhoogt de kans op tandvleesontstekingen aanzienlijk.</span>
             </div>
         </div>
         <div class="wm" aria-hidden="true">02</div>
@@ -946,8 +589,7 @@
             <div class="tech-badge">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                     <circle cx="6.5" cy="6.5" r="5.5" stroke="#5409FF" stroke-width="1.5" />
-                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 CE-gecertificeerd · klinisch getest
             </div>
@@ -957,30 +599,26 @@
                 <span class="snum">1</span>
                 <div class="stxt">
                     <span class="stitle">Aligner in het apparaat</span>
-                    <span class="sdesc">Patiënt legt de aligner in het waterreservoir. Geen tabletten of extra middelen
-                        nodig.</span>
+                    <span class="sdesc">Patiënt legt de aligner in het waterreservoir. Geen tabletten of extra middelen nodig.</span>
                 </div>
             </div>
             <div class="how-step">
                 <span class="snum">2</span>
                 <div class="stxt">
                     <span class="stitle">5 minuten ultrasoon en UV-C</span>
-                    <span class="sdesc">45.000 Hz trillingen breken biofilm los, UV-C elimineert 99,9% van de
-                        bacteriën</span>
+                    <span class="sdesc">45.000 Hz trillingen breken biofilm los, UV-C elimineert 99,9% van de bacteriën</span>
                 </div>
             </div>
             <div class="how-step">
                 <span class="snum">3</span>
                 <div class="stxt">
                     <span class="stitle">Klinisch schoon resultaat</span>
-                    <span class="sdesc">Geen geur, geen verkleuring. De patiënt draagt de aligner graag en de compliance
-                        stijgt vanzelf.</span>
+                    <span class="sdesc">Geen geur, geen verkleuring. De patiënt draagt de aligner graag en de compliance stijgt vanzelf.</span>
                 </div>
             </div>
         </div>
         <div class="wm" aria-hidden="true">03</div>
     </section>
-
 
     <!-- ═══ SLIDE 4: PAKKET ═══ -->
     <section class="slide" id="s3">
@@ -995,37 +633,11 @@
             </p>
         </div>
         <div class="s5-right">
-            <div class="pkg-row">
-                <div class="check"><svg viewBox="0 0 10 8">
-                        <polyline points="1,4 4,7 9,1" />
-                    </svg></div>
-                <span class="pkg-text">Oraltec One ultrasone reinigingsunit</span>
-            </div>
-            <div class="pkg-row">
-                <div class="check"><svg viewBox="0 0 10 8">
-                        <polyline points="1,4 4,7 9,1" />
-                    </svg></div>
-                <span class="pkg-text">Luxe draagtas</span>
-            </div>
-            <div class="pkg-row">
-                <div class="check"><svg viewBox="0 0 10 8">
-                        <polyline points="1,4 4,7 9,1" />
-                    </svg></div>
-                <span class="pkg-text">Instructieflyer &amp; Quick Start Guide</span>
-            </div>
-
-            <div class="pkg-row">
-                <div class="check"><svg viewBox="0 0 10 8">
-                        <polyline points="1,4 4,7 9,1" />
-                    </svg></div>
-                <span class="pkg-text">Voedingsadapter</span>
-            </div>
-            <div class="pkg-row">
-                <div class="check"><svg viewBox="0 0 10 8">
-                        <polyline points="1,4 4,7 9,1" />
-                    </svg></div>
-                <span class="pkg-text">Garantiebewijs · 2 jaar omruilgarantie</span>
-            </div>
+            <div class="pkg-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="pkg-text">Oraltec One ultrasone reinigingsunit</span></div>
+            <div class="pkg-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="pkg-text">Luxe draagtas</span></div>
+            <div class="pkg-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="pkg-text">Instructieflyer &amp; Quick Start Guide</span></div>
+            <div class="pkg-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="pkg-text">Voedingsadapter</span></div>
+            <div class="pkg-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="pkg-text">Garantiebewijs · 2 jaar omruilgarantie</span></div>
         </div>
         <div class="wm" aria-hidden="true">04</div>
     </section>
@@ -1046,37 +658,11 @@
             <div class="workflow-block">
                 <span class="wf-title">Wat u ontvangt als partner</span>
                 <div class="incl-list" style="margin-top:var(--sp-1);">
-                    <div class="incl-row">
-                        <div class="check"><svg viewBox="0 0 10 8">
-                                <polyline points="1,4 4,7 9,1" />
-                            </svg></div>
-                        <span class="incl-text">Gratis demo-unit zodat u het zelf ervaart voor de eerste order</span>
-                    </div>
-                    <div class="incl-row">
-                        <div class="check"><svg viewBox="0 0 10 8">
-                                <polyline points="1,4 4,7 9,1" />
-                            </svg></div>
-                        <span class="incl-text">Wachtkamerbrochures en digitale content voor uw praktijk</span>
-                    </div>
-                    <div class="incl-row">
-                        <div class="check"><svg viewBox="0 0 10 8">
-                                <polyline points="1,4 4,7 9,1" />
-                            </svg></div>
-                        <span class="incl-text">Patiëntfolders op maat in het Nederlands en Frans</span>
-                    </div>
-                    <div class="incl-row">
-                        <div class="check"><svg viewBox="0 0 10 8">
-                                <polyline points="1,4 4,7 9,1" />
-                            </svg></div>
-                        <span class="incl-text">Vast aanspreekpunt bij Oraltec voor support en voorraad</span>
-                    </div>
-                    <div class="incl-row">
-                        <div class="check"><svg viewBox="0 0 10 8">
-                                <polyline points="1,4 4,7 9,1" />
-                            </svg></div>
-                        <span class="incl-text">Units volledig geassembleerd geleverd en direct klaar voor
-                            uitgifte</span>
-                    </div>
+                    <div class="incl-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="incl-text">Gratis demo-unit zodat u het zelf ervaart voor de eerste order</span></div>
+                    <div class="incl-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="incl-text">Wachtkamerbrochures en digitale content voor uw praktijk</span></div>
+                    <div class="incl-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="incl-text">Patiëntfolders op maat in het Nederlands en Frans</span></div>
+                    <div class="incl-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="incl-text">Vast aanspreekpunt bij Oraltec voor support en voorraad</span></div>
+                    <div class="incl-row"><div class="check"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div><span class="incl-text">Units volledig geassembleerd geleverd en direct klaar voor uitgifte</span></div>
                 </div>
             </div>
         </div>
@@ -1093,7 +679,7 @@
             </div>
             <div class="next-steps">
                 <div class="next-row primary">
-                    <span class="nnum">→</span>
+                    <span class="nnum">1</span>
                     <div>
                         <div class="ntxt">Demo live bekijken</div>
                         <div class="nsub">Ik laat het apparaat nu zien. 5 minuten en u ziet het resultaat.</div>
@@ -1102,31 +688,31 @@
                 <div class="next-row">
                     <span class="nnum">2</span>
                     <div>
+                        <div class="ntxt">Vinden jullie het wat?</div>
+                        <div class="nsub">Dan gaan we naar de tekenkamer.</div>
+                    </div>
+                </div>
+                <div class="next-row">
+                    <span class="nnum">3</span>
+                    <div>
+                        <div class="ntxt">Pod én verpakking op maat ontwerpen</div>
+                        <div class="nsub">Jullie branding, jullie stijl.</div>
+                    </div>
+                </div>
+                <div class="next-row">
+                    <span class="nnum">4</span>
+                    <div>
                         <div class="ntxt">Eerste order plaatsen</div>
-                        <div class="nsub">Geen minimale afname. U start op uw eigen tempo.</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="contact-card">
-            <div class="cc-row">
-                <span class="cc-label">Contactpersoon</span>
-                <span class="cc-val">Lucas Pepermans</span>
-            </div>
-            <div class="cc-row">
-                <span class="cc-label">Telefoon</span>
-                <span class="cc-val">+31 6 40 08 91 21</span>
-            </div>
-            <div class="cc-row">
-                <span class="cc-label">E-mail</span>
-                <span class="cc-val">lucas@oraltec.nl</span>
-            </div>
-            <div class="cc-row">
-                <span class="cc-label">Website</span>
-                <span class="cc-val">www.oraltec.nl</span>
-            </div>
-            <div class="cc-row"
-                style="border-top:1px solid var(--border); padding-top:var(--sp-3); margin-top:var(--sp-1);">
+            <div class="cc-row"><span class="cc-label">Contactpersoon</span><span class="cc-val">Lucas Pepermans</span></div>
+            <div class="cc-row"><span class="cc-label">Telefoon</span><span class="cc-val">+31 6 40 08 91 21</span></div>
+            <div class="cc-row"><span class="cc-label">E-mail</span><span class="cc-val">lucas@oraltec.nl</span></div>
+            <div class="cc-row"><span class="cc-label">Website</span><span class="cc-val">www.oraltec.nl</span></div>
+            <div class="cc-row" style="border-top:1px solid var(--border); padding-top:var(--sp-3); margin-top:var(--sp-1);">
                 <span class="cc-label">Inkoopprijs vanaf</span>
                 <span class="cc-price">€ 54,60</span>
             </div>
@@ -1146,22 +732,19 @@
                 <span class="bnum">€ 54,60</span>
                 <span class="blab">Inkoopprijs per unit</span>
                 <span class="bnote">50 tot 150 stuks</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 23,87 per
-                        unit</strong></span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 23,87 per unit</strong></span>
             </div>
             <div class="bc-cell" data-tier="Partner">
                 <span class="bnum">€ 51,85</span>
                 <span class="blab">Inkoopprijs per unit</span>
                 <span class="bnote">151 tot 350 stuks · 5% korting</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 26,62 per
-                        unit</strong></span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 26,62 per unit</strong></span>
             </div>
             <div class="bc-cell featured" data-tier="Exclusive">
                 <span class="bnum">€ 49,15</span>
                 <span class="blab">Inkoopprijs per unit</span>
                 <span class="bnote">351 stuks of meer · 10% korting</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 29,32 per
-                        unit</strong></span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 29,32 per unit</strong></span>
             </div>
         </div>
         <div class="s4-foot">
@@ -1213,20 +796,13 @@
         });
         ui(0);
 
-        // Lightbox logic
-        function openLightbox() {
-            document.getElementById('lightbox').classList.add('active');
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
+        function openLightbox() { document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
     </script>
 
-    <!-- Lightbox DOM -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close modal">×</button>
         <img src="oraltec-one.png" alt="Oraltec One Enlarged" class="lightbox-img" onclick="event.stopPropagation()">
     </div>
 </body>
-
 </html>
