@@ -237,10 +237,11 @@
 
         /* ═══ S1: HERO ═══ */
         .s1-left {
-            grid-column: 1 / span 7;
+            grid-column: 1 / span 6;
             display: flex;
             flex-direction: column;
             gap: 0;
+            justify-content: center;
         }
 
         .s1-left .headline {
@@ -267,24 +268,91 @@
         }
 
         .s1-right {
-            grid-column: 8 / span 5;
+            grid-column: 7 / span 6;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+        }
+
+        /* Glow blob achter product */
+        .s1-right::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(84,9,255,0.12) 0%, rgba(84,9,255,0.04) 50%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.7; }
+        }
+
+        /* Decoratieve ring */
+        .s1-right::after {
+            content: '';
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border: 1px solid rgba(84,9,255,0.08);
+            border-radius: 50%;
+            z-index: 0;
         }
 
         .product-img {
             width: 100%;
-            max-width: 420px;
+            max-width: 460px;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.12));
-            animation: floatImg 4s ease-in-out infinite;
+            filter: drop-shadow(0 32px 64px rgba(84,9,255,0.15)) drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+            animation: floatImg 5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes floatImg {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-14px) rotate(1deg); }
+        }
+
+        /* Spec badges */
+        .spec-badge {
+            position: absolute;
+            z-index: 2;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            font-size: var(--t-sm);
+            font-weight: 700;
+            color: var(--ink-1);
+            white-space: nowrap;
+        }
+
+        .spec-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .spec-badge-1 { top: 18%; right: 2%; animation: badgeFloat 4s ease-in-out infinite; }
+        .spec-badge-2 { bottom: 28%; right: -2%; animation: badgeFloat 4s ease-in-out infinite 0.8s; }
+        .spec-badge-3 { bottom: 18%; left: 4%; animation: badgeFloat 4s ease-in-out infinite 1.6s; }
+
+        @keyframes badgeFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-6px); }
         }
 
         /* ═══ S2: PROBLEEM ═══ */
@@ -719,6 +787,18 @@
         </div>
         <div class="s1-right">
             <img src="oraltec-one.png" alt="Oraltec One ultrasone alignercleaner" class="product-img">
+            <div class="spec-badge spec-badge-1">
+                <span class="badge-dot"></span>
+                45 kHz ultrasoon
+            </div>
+            <div class="spec-badge spec-badge-2">
+                <span class="badge-dot"></span>
+                UV-C sterilisatie
+            </div>
+            <div class="spec-badge spec-badge-3">
+                <span class="badge-dot"></span>
+                Klaar in 5 min
+            </div>
         </div>
         <div class="wm" aria-hidden="true">01</div>
     </section>
