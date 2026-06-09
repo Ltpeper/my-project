@@ -202,18 +202,17 @@
 
         .logo-mark {
             position: fixed;
-            top: 32px;
+            top: 28px;
             left: var(--safe);
-            font-size: var(--t-base);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--ink-1);
-            font-family: 'DM Sans', sans-serif;
             z-index: 200;
+            display: flex;
+            align-items: center;
         }
 
-        .logo-mark span {
-            color: var(--accent);
+        .logo-mark img,
+        .logo-mark svg {
+            height: 36px;
+            width: auto;
         }
 
         /* BG WATERMARK */
@@ -726,7 +725,14 @@
 <body>
 
     <div class="progress" id="progress"></div>
-    <div class="logo-mark">Oral<span>tec</span></div>
+    <div class="logo-mark">
+        <svg viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top pill -->
+            <rect x="8" y="4" width="64" height="22" rx="11" fill="#1e2028"/>
+            <!-- Bottom pill -->
+            <rect x="8" y="30" width="64" height="22" rx="11" fill="#1e2028"/>
+        </svg>
+    </div>
 
     <nav class="nav-dots" id="navDots">
         <button class="nav-dot active" onclick="go(0)" aria-label="Slide 1"></button>
