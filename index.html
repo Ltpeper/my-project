@@ -720,43 +720,112 @@
         <div class="wm" aria-hidden="true">06</div>
     </section>
 
-    <!-- ═══ SLIDE 7: PRIJZEN ═══ -->
-    <section class="slide" id="s6" style="align-content:start; padding-top:var(--safe);">
-        <div class="s4-head">
+    <!-- ═══ SLIDE 7: CALCULATOR ═══ -->
+    <section class="slide" id="s6" style="align-content:center;">
+        <div style="grid-column:1 / span 5; display:flex; flex-direction:column; gap:var(--sp-4); justify-content:center;">
             <span class="eyebrow">Investering</span>
-            <div class="accent-bar" style="margin-top:12px;"></div>
-            <h2 class="subhead">Een behandeling van €3.000 verdient goede nazorg.</h2>
-        </div>
-        <div class="s4-grid">
-            <div class="bc-cell" data-tier="Starter">
-                <span class="bnum">€ 54,60</span>
-                <span class="blab">Inkoopprijs per unit</span>
-                <span class="bnote">50 tot 150 stuks</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 23,87 per unit</strong></span>
+            <div class="accent-bar"></div>
+            <h2 class="subhead">Wat past bij jullie praktijk?</h2>
+
+            <div style="display:flex; flex-direction:column; gap:var(--sp-3); margin-top:var(--sp-1);">
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <label style="font-size:var(--t-sm); font-weight:700; color:var(--ink-1);">Alignerbehandelingen per maand</label>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <input type="range" id="treatmentsSlider" min="1" max="200" value="30"
+                            style="flex:1; accent-color:var(--accent); cursor:pointer;">
+                        <input type="number" id="treatmentsNum" value="30" min="1" max="200"
+                            style="width:64px; border:1px solid var(--border); padding:6px 10px; font-family:'DM Sans',sans-serif; font-size:var(--t-sm); font-weight:700; color:var(--ink-1); text-align:center; outline:none; border-radius:2px;">
+                    </div>
+                </div>
+
+
             </div>
-            <div class="bc-cell" data-tier="Partner">
-                <span class="bnum">€ 51,85</span>
-                <span class="blab">Inkoopprijs per unit</span>
-                <span class="bnote">151 tot 350 stuks · 5% korting</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 26,62 per unit</strong></span>
-            </div>
-            <div class="bc-cell featured" data-tier="Exclusive">
-                <span class="bnum">€ 49,15</span>
-                <span class="blab">Inkoopprijs per unit</span>
-                <span class="bnote">351 stuks of meer · 10% korting</span>
-                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 29,32 per unit</strong></span>
-            </div>
-        </div>
-        <div class="s4-foot">
-            <div class="i-badge">i</div>
-            <p class="body" style="font-size:var(--t-sm); max-width:65ch;">
-                De marge is een bijproduct. Het echte argument is dat u uw patiënten iets geeft
-                wat bij de behandeling past. Adviesverkoopprijs <strong>€ 94,95 incl. BTW</strong>.
-                U bepaalt zelf wat u vraagt.
+
+            <p style="font-size:var(--t-xs); color:var(--ink-3); line-height:1.5; margin-top:var(--sp-1);">
+                Adviesverkoopprijs <strong style="color:var(--ink-2);">€ 94,95 incl. BTW</strong>. U bepaalt zelf wat u vraagt.
             </p>
         </div>
+
+        <div style="grid-column:7 / span 6; display:flex; flex-direction:column; gap:var(--sp-3); justify-content:center;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; border:1px solid var(--border); background:var(--border);">
+                <div style="background:var(--bg); padding:var(--sp-4);">
+                    <div style="font-size:var(--t-xs); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-3); margin-bottom:6px;">Aanbevolen units</div>
+                    <div id="recUnits" style="font-size:var(--t-2xl); font-weight:800; color:var(--accent); line-height:1;">30</div>
+                    <div style="font-size:var(--t-xs); color:var(--ink-3); margin-top:4px;">per maand</div>
+                </div>
+                <div style="background:var(--bg); padding:var(--sp-4);">
+                    <div style="font-size:var(--t-xs); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-3); margin-bottom:6px;">Inkoopprijs / unit</div>
+                    <div id="pricePerUnit" style="font-size:var(--t-2xl); font-weight:800; color:var(--ink-1); line-height:1;">€ 54,60</div>
+                    <div id="tierLabel" style="font-size:var(--t-xs); color:var(--ink-3); margin-top:4px;">Starter · 50–150 stuks</div>
+                </div>
+                <div style="background:var(--bg); padding:var(--sp-4);">
+                    <div style="font-size:var(--t-xs); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-3); margin-bottom:6px;">Totale inkoopkost</div>
+                    <div id="totalCost" style="font-size:var(--t-2xl); font-weight:800; color:var(--ink-1); line-height:1;">€ 1.638</div>
+                    <div style="font-size:var(--t-xs); color:var(--ink-3); margin-top:4px;">per maand</div>
+                </div>
+                <div style="background:var(--surface); padding:var(--sp-4);">
+                    <div style="font-size:var(--t-xs); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-3); margin-bottom:6px;">Potentiële omzet</div>
+                    <div id="revenue" style="font-size:var(--t-2xl); font-weight:800; color:var(--accent); line-height:1;">€ 2.849</div>
+                    <div style="font-size:var(--t-xs); color:var(--ink-3); margin-top:4px;">per maand</div>
+                </div>
+            </div>
+
+            <div style="background:var(--surface); border:1px solid var(--border); padding:var(--sp-3) var(--sp-4); display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:var(--t-sm); font-weight:600; color:var(--ink-2);">Marge per maand</span>
+                <span id="margin" style="font-size:var(--t-md); font-weight:800; color:var(--accent);">€ 1.211</span>
+            </div>
+        </div>
+
         <div class="wm" aria-hidden="true">07</div>
     </section>
+
+    <script>
+        // Base prices per tier (before discount)
+        const BASE_PRICES = [
+            { max: 150,  price: 54.60, label: 'Starter · 50–150 stuks' },
+            { max: 350,  price: 51.85, label: 'Partner · 151–350 stuks' },
+            { max: Infinity, price: 49.15, label: 'Exclusive · 351+ stuks' },
+        ];
+        const SELL_PRICE = 94.95 / 1.21; // excl VAT for margin calc; or use incl. as sell price
+        const SELL_PRICE_INCL = 94.95;
+
+        function getTier(units) {
+            return BASE_PRICES.find(t => units <= t.max);
+        }
+
+        function fmt(n) {
+            return '€ ' + Math.round(n).toLocaleString('nl-NL');
+        }
+
+        function calc() {
+            const units = parseInt(document.getElementById('treatmentsSlider').value) || 1;
+            const tier = getTier(units);
+            const totalCost = tier.price * units;
+            const rev = SELL_PRICE_INCL * units;
+            const marginVal = rev - totalCost;
+
+            document.getElementById('recUnits').textContent = units;
+            document.getElementById('pricePerUnit').textContent = '€ ' + tier.price.toFixed(2).replace('.', ',');
+            document.getElementById('tierLabel').textContent = tier.label;
+            document.getElementById('totalCost').textContent = fmt(totalCost);
+            document.getElementById('revenue').textContent = fmt(rev);
+            document.getElementById('margin').textContent = fmt(marginVal);
+        }
+
+        const slider = document.getElementById('treatmentsSlider');
+        const num = document.getElementById('treatmentsNum');
+        slider.addEventListener('input', () => { num.value = slider.value; calc(); });
+        num.addEventListener('input', () => {
+            let v = parseInt(num.value);
+            if (isNaN(v)) return;
+            v = Math.max(1, Math.min(200, v));
+            slider.value = v;
+            num.value = v;
+            calc();
+        });
+
+        calc();
+    </script>
 
     <script>
         const slides = document.querySelectorAll('.slide');
