@@ -664,113 +664,6 @@
             max-width: 38ch;
         }
 
-        /* ═══ S_COMP: VERGELIJKING ═══ */
-        .scomp-head {
-            grid-column: 1 / span 12;
-            margin-bottom: var(--sp-4);
-        }
-
-        .scomp-table {
-            grid-column: 1 / span 12;
-            display: grid;
-            grid-template-columns: 2.2fr 3.2fr 3fr 3fr;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.02);
-            margin-top: var(--sp-2);
-        }
-
-        .scomp-row {
-            display: contents;
-        }
-
-        .scomp-header {
-            font-weight: 700;
-            font-size: var(--t-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--ink-3);
-            border-bottom: 2px solid var(--border);
-            padding: var(--sp-3) var(--sp-4);
-            background: var(--surface);
-            display: flex;
-            align-items: center;
-        }
-
-        .scomp-header.oraltec-header {
-            color: var(--accent);
-            background: var(--accent-glow);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .scomp-cell {
-            padding: var(--sp-3) var(--sp-4);
-            border-bottom: 1px solid var(--border);
-            font-size: var(--t-sm);
-            color: var(--ink-2);
-            display: flex;
-            align-items: center;
-            gap: var(--sp-2);
-            line-height: 1.4;
-        }
-
-        .scomp-cell.feature-name {
-            font-weight: 700;
-            color: var(--ink-1);
-            background: var(--surface);
-        }
-
-        .scomp-cell.oraltec-cell {
-            background: rgba(84, 9, 255, 0.02);
-            font-weight: 600;
-            color: var(--ink-1);
-            border-left: 1px solid rgba(84, 9, 255, 0.1);
-            border-right: 1px solid rgba(84, 9, 255, 0.1);
-        }
-
-        .scomp-row:last-child .scomp-cell {
-            border-bottom: none;
-        }
-
-        .scomp-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .scomp-icon.yes {
-            background: var(--accent-glow);
-            color: var(--accent);
-            border: 1.5px solid var(--accent);
-        }
-
-        .scomp-icon.yes svg {
-            width: 9px;
-            height: 9px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 2.5;
-        }
-
-        .scomp-icon.no {
-            color: var(--ink-3);
-            opacity: 0.5;
-        }
-
-        .scomp-icon.no svg {
-            width: 10px;
-            height: 10px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
-
         /* ═══ S7: NEXT STEP ═══ */
         .s7-left {
             grid-column: 1 / span 7;
@@ -870,10 +763,8 @@
         <button class="nav-dot" onclick="go(3)" aria-label="Slide 4"></button>
         <button class="nav-dot" onclick="go(4)" aria-label="Slide 5"></button>
         <button class="nav-dot" onclick="go(5)" aria-label="Slide 6"></button>
-        <button class="nav-dot" onclick="go(6)" aria-label="Slide 7"></button>
-        <button class="nav-dot" onclick="go(7)" aria-label="Slide 8"></button>
     </nav>
-    <div class="counter" id="counter">01 / 08</div>
+    <div class="counter" id="counter">01 / 06</div>
 
     <!-- ═══ SLIDE 1: HERO ═══ -->
     <section class="slide" id="s0">
@@ -993,128 +884,8 @@
         <div class="wm" aria-hidden="true">03</div>
     </section>
 
-    <!-- ═══ SLIDE 4: VERGELIJKING ═══ -->
-    <section class="slide" id="s-comp" style="align-content:start; padding-top:var(--safe);">
-        <div class="scomp-head">
-            <span class="eyebrow">Marktvergelijking</span>
-            <div class="accent-bar" style="margin-top:12px;"></div>
-            <h2 class="subhead">Waarom behandelaars voor Oraltec kiezen</h2>
-        </div>
-        <div class="scomp-table">
-            <!-- Header Row -->
-            <div class="scomp-row">
-                <div class="scomp-header">Kenmerk</div>
-                <div class="scomp-header oraltec-header">Oraltec One</div>
-                <div class="scomp-header">Zima Dental (Dental Pod)</div>
-                <div class="scomp-header">Generieke Pods (Bol/Amazon)</div>
-            </div>
 
-            <!-- Row 1: UV-C -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">UV-C Sterilisatie</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>Ja</strong> (99,9% bacteriën gedood)</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Nee</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Nee (vaak nep blauw licht)</span>
-                </div>
-            </div>
-
-            <!-- Row 2: Frequency -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">Ultrasone Kracht</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>45 kHz</strong> (optimaal voor aligners)</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon yes" style="border-color:var(--ink-3); background:none;"><svg viewBox="0 0 10 8" style="stroke:var(--ink-2);"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span>42 kHz</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>40-42 kHz (inconsistent)</span>
-                </div>
-            </div>
-
-            <!-- Row 3: Target audience & margin -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">Kanaal &amp; Marge</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>Exclusief via behandelaar</strong></span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Concurreert direct via eigen webshop</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Open dropship markt (prijzenslag)</span>
-                </div>
-            </div>
-
-            <!-- Row 4: Support -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">Praktijk support</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>Ja</strong> (folders, demo's, brochures)</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Nee (volledig consumentenfocus)</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Nee</span>
-                </div>
-            </div>
-
-            <!-- Row 5: Warranty -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">Garantie</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>2 jaar</strong> B2B omruilgarantie</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon yes" style="border-color:var(--ink-3); background:none;"><svg viewBox="0 0 10 8" style="stroke:var(--ink-2);"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span>1 jaar consumentengarantie</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Geen of wisselend per verkoper</span>
-                </div>
-            </div>
-
-            <!-- Row 6: Safety -->
-            <div class="scomp-row">
-                <div class="scomp-cell feature-name">Kwaliteitsborging</div>
-                <div class="scomp-cell oraltec-cell">
-                    <div class="scomp-icon yes"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span><strong>CE-gecertificeerd</strong> (klinisch getest)</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon yes" style="border-color:var(--ink-3); background:none;"><svg viewBox="0 0 10 8" style="stroke:var(--ink-2);"><polyline points="1,4 4,7 9,1" /></svg></div>
-                    <span>CE-gecertificeerd</span>
-                </div>
-                <div class="scomp-cell">
-                    <div class="scomp-icon no"><svg viewBox="0 0 10 10"><path d="M1 1L9 9M9 1L1 9" /></svg></div>
-                    <span>Twijfelachtig (brand- &amp; elektrarisico)</span>
-                </div>
-            </div>
-        </div>
-        <div class="wm" aria-hidden="true">04</div>
-    </section>
-
-    <!-- ═══ SLIDE 5: PAKKET ═══ -->
+    <!-- ═══ SLIDE 4: PAKKET ═══ -->
     <section class="slide" id="s3">
         <div class="s5-left">
             <span class="eyebrow">Patiëntenuitrusting</span>
@@ -1159,7 +930,7 @@
                 <span class="pkg-text">Garantiebewijs · 2 jaar omruilgarantie</span>
             </div>
         </div>
-        <div class="wm" aria-hidden="true">05</div>
+        <div class="wm" aria-hidden="true">04</div>
     </section>
 
     <!-- ═══ SLIDE 5: SAMENWERKING ═══ -->
@@ -1212,7 +983,7 @@
                 </div>
             </div>
         </div>
-        <div class="wm" aria-hidden="true">06</div>
+        <div class="wm" aria-hidden="true">05</div>
     </section>
 
     <!-- ═══ SLIDE 6: NEXT STEP ═══ -->
@@ -1263,7 +1034,7 @@
                 <span class="cc-price">€ 54,60</span>
             </div>
         </div>
-        <div class="wm" aria-hidden="true">07</div>
+        <div class="wm" aria-hidden="true">06</div>
     </section>
 
     <!-- ═══ SLIDE 7: PRIJZEN ═══ -->
@@ -1304,7 +1075,7 @@
                 U bepaalt zelf wat u vraagt.
             </p>
         </div>
-        <div class="wm" aria-hidden="true">08</div>
+        <div class="wm" aria-hidden="true">07</div>
     </section>
 
     <script>
