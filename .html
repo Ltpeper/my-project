@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oraltec — Orthodontie Antwerpen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --accent: #5409FF;
+            --accent-dim: #3D07CC;
+            --accent-glow: rgba(84, 9, 255, 0.10);
+            --bg: #FFFFFF;
+            --surface: #F7F7F9;
+            --ink-1: #0A0A0A;
+            --ink-2: #3A3A3A;
+            --ink-3: #8A8A8A;
+            --border: #E4E4E7;
+
+            --sp-1: 8px;
+            --sp-2: 16px;
+            --sp-3: 24px;
+            --sp-4: 32px;
+            --sp-6: 48px;
+            --sp-12: 96px;
+            --safe: 96px;
+
+            --t-xs: 0.563rem;
+            --t-sm: 0.75rem;
+            --t-base: 1rem;
+            --t-md: 1.333rem;
+            --t-lg: 1.777rem;
+            --t-xl: 2.369rem;
+            --t-2xl: 3.157rem;
+            --t-3xl: 4.209rem;
+            --t-4xl: 5.61rem;
+
+            --lh-d: 1.07;
+            --lh-b: 1.55;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink-2);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            height: 100vh;
+        }
+
+        /* SLIDE BASE */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 24px;
+            padding: var(--safe);
+            overflow: hidden;
+            align-content: center;
+        }
+
+        /* TYPE */
+        .eyebrow {
+            font-size: var(--t-sm);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .headline {
+            font-size: var(--t-3xl);
+            font-weight: 800;
+            color: var(--ink-1);
+            line-height: var(--lh-d);
+            max-width: 16ch;
+        }
+
+        .subhead {
+            font-size: var(--t-xl);
+            font-weight: 700;
+            color: var(--ink-1);
+            line-height: 1.1;
+            max-width: 24ch;
+        }
+
+        .body {
+            font-size: var(--t-base);
+            font-weight: 400;
+            color: var(--ink-2);
+            line-height: var(--lh-b);
+            max-width: 50ch;
+        }
+
+        .label {
+            font-size: var(--t-sm);
+            font-weight: 500;
+            color: var(--ink-3);
+            letter-spacing: 0.03em;
+        }
+
+        /* HELPERS */
+        .accent-bar {
+            width: 40px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin-bottom: var(--sp-3);
+        }
+
+        .check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            border: 1.5px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .check svg {
+            width: 9px;
+            height: 9px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        /* CHROME */
+        .nav-dots {
+            position: fixed;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 200;
+        }
+
+        .nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+            padding: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.5);
+        }
+
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width .35s ease;
+            z-index: 300;
+        }
+
+        .counter {
+            position: fixed;
+            bottom: 32px;
+            right: var(--safe);
+            font-size: var(--t-sm);
+            color: var(--ink-3);
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            z-index: 200;
+        }
+
+        .logo-mark {
+            position: fixed;
+            top: 32px;
+            left: var(--safe);
+            font-size: var(--t-base);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink-1);
+            font-family: 'DM Sans', sans-serif;
+            z-index: 200;
+        }
+
+        .logo-mark span {
+            color: var(--accent);
+        }
+
+        /* BG WATERMARK */
+        .wm {
+            position: absolute;
+            right: calc(var(--safe) - 24px);
+            bottom: calc(var(--safe) - 48px);
+            font-size: 260px;
+            font-weight: 800;
+            color: var(--surface);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        .slide>*:not(.wm) {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══ S1: HERO ═══ */
+        .s1-left {
+            grid-column: 1 / span 7;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .s1-left .headline {
+            font-size: var(--t-4xl);
+            margin-top: var(--sp-3);
+        }
+
+        .s1-left .body {
+            margin-top: var(--sp-6);
+        }
+
+        .s1-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-1);
+            margin-top: var(--sp-6);
+            padding: 8px var(--sp-3);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            font-size: var(--t-sm);
+            font-weight: 600;
+            color: var(--accent);
+            width: fit-content;
+        }
+
+        .s1-right {
+            grid-column: 9 / span 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .device-box {
+            width: 210px;
+            height: 210px;
+            background: var(--surface);
+            border-radius: 28px;
+            border: 1.5px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-2);
+            position: relative;
+        }
+
+        .device-box::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(84, 9, 255, .35) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .d-icon {
+            width: 68px;
+            height: 68px;
+            background: var(--accent);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .d-name {
+            font-size: var(--t-sm);
+            font-weight: 800;
+            color: var(--ink-1);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .d-sub {
+            font-size: var(--t-xs);
+            color: var(--ink-3);
+            font-weight: 500;
+            text-align: center;
+            padding: 0 var(--sp-3);
+        }
+
+        /* ═══ S2: PROBLEEM ═══ */
+        .s2-head {
+            grid-column: 1 / span 12;
+            margin-bottom: var(--sp-12);
+        }
+
+        .s2-cards {
+            grid-column: 1 / span 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--sp-4);
+        }
+
+        .prob-card {
+            padding: var(--sp-6) var(--sp-4);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-2);
+            position: relative;
+            background: var(--bg);
+        }
+
+        .prob-card .top-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--border);
+        }
+
+        .prob-card.hl .top-line {
+            background: var(--accent);
+        }
+
+        .prob-card .pnum {
+            font-size: var(--t-2xl);
+            font-weight: 800;
+            color: var(--ink-1);
+            line-height: 1;
+        }
+
+        .prob-card.hl .pnum {
+            color: var(--accent);
+        }
+
+        .prob-card .ptitle {
+            font-size: var(--t-base);
+            font-weight: 600;
+            color: var(--ink-1);
+        }
+
+        .prob-card .psub {
+            font-size: var(--t-sm);
+            color: var(--ink-2);
+            line-height: 1.5;
+            max-width: 30ch;
+        }
+
+        /* ═══ S3: OPLOSSING ═══ */
+        .s3-left {
+            grid-column: 1 / span 5;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+            justify-content: center;
+        }
+
+        .s3-right {
+            grid-column: 7 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+            justify-content: center;
+        }
+
+        .how-step {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-2);
+            padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-3);
+            border-left: 2px solid var(--border);
+        }
+
+        .how-step.active {
+            border-left-color: var(--accent);
+            background: var(--surface);
+        }
+
+        .snum {
+            font-size: var(--t-md);
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            min-width: 28px;
+        }
+
+        .stxt {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stitle {
+            font-size: var(--t-base);
+            font-weight: 700;
+            color: var(--ink-1);
+        }
+
+        .sdesc {
+            font-size: var(--t-sm);
+            color: var(--ink-2);
+            line-height: 1.5;
+            max-width: 34ch;
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-1);
+            padding: 7px var(--sp-2);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            font-size: var(--t-sm);
+            font-weight: 600;
+            color: var(--accent);
+            width: fit-content;
+        }
+
+        /* ═══ S4: BUSINESS CASE ═══ */
+        .s4-head {
+            grid-column: 1 / span 12;
+            margin-bottom: var(--sp-6);
+        }
+
+        .s4-grid {
+            grid-column: 1 / span 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--border);
+            background: var(--border);
+            gap: 1px;
+        }
+
+        .bc-cell {
+            background: var(--bg);
+            padding: var(--sp-6) var(--sp-4);
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-1);
+            position: relative;
+        }
+
+        .bc-cell::before {
+            content: attr(data-tier);
+            position: absolute;
+            top: var(--sp-3);
+            right: var(--sp-3);
+            font-size: var(--t-xs);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+
+        .bc-cell.featured::before {
+            color: var(--accent);
+        }
+
+        .bc-cell .bnum {
+            font-size: var(--t-2xl);
+            font-weight: 800;
+            color: var(--ink-1);
+            line-height: 1;
+        }
+
+        .bc-cell .blab {
+            font-size: var(--t-sm);
+            color: var(--ink-2);
+            font-weight: 500;
+        }
+
+        .bc-cell .bnote {
+            font-size: var(--t-xs);
+            color: var(--ink-3);
+            line-height: 1.4;
+            max-width: 22ch;
+        }
+
+        .bc-cell.featured .bnum {
+            color: var(--accent);
+        }
+
+        .s4-foot {
+            grid-column: 1 / span 12;
+            margin-top: var(--sp-4);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-2);
+        }
+
+        .i-badge {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* ═══ S5: PAKKET ═══ */
+        .s5-left {
+            grid-column: 1 / span 5;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+            justify-content: center;
+        }
+
+        .s5-right {
+            grid-column: 7 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-2);
+            justify-content: center;
+        }
+
+        .pkg-row {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-2);
+            padding: var(--sp-2) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pkg-row:last-child {
+            border-bottom: none;
+        }
+
+        .pkg-text {
+            font-size: var(--t-base);
+            color: var(--ink-1);
+            font-weight: 500;
+        }
+
+        /* ═══ S6: SAMENWERKING ═══ */
+        .s6-left {
+            grid-column: 1 / span 5;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-4);
+            justify-content: center;
+        }
+
+        .s6-right {
+            grid-column: 7 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+            justify-content: center;
+        }
+
+        .incl-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-2);
+        }
+
+        .incl-row {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-2);
+        }
+
+        .incl-text {
+            font-size: var(--t-sm);
+            color: var(--ink-2);
+            line-height: 1.4;
+        }
+
+        .workflow-block {
+            padding: var(--sp-4);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-2);
+        }
+
+        .wf-title {
+            font-size: var(--t-base);
+            font-weight: 700;
+            color: var(--ink-1);
+        }
+
+        .wf-body {
+            font-size: var(--t-sm);
+            color: var(--ink-2);
+            line-height: 1.5;
+            max-width: 38ch;
+        }
+
+        /* ═══ S7: NEXT STEP ═══ */
+        .s7-left {
+            grid-column: 1 / span 7;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-6);
+        }
+
+        .next-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+        }
+
+        .next-row {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-3);
+            padding: var(--sp-3) var(--sp-4);
+            border: 1px solid var(--border);
+        }
+
+        .next-row.primary {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .nnum {
+            font-size: var(--t-md);
+            font-weight: 800;
+            color: var(--accent);
+            min-width: 32px;
+            line-height: 1;
+        }
+
+        .ntxt {
+            font-size: var(--t-base);
+            color: var(--ink-1);
+            font-weight: 500;
+        }
+
+        .nsub {
+            font-size: var(--t-sm);
+            color: var(--ink-3);
+            margin-top: 2px;
+        }
+
+        .contact-card {
+            grid-column: 9 / span 4;
+            align-self: center;
+            padding: var(--sp-6);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-4);
+        }
+
+        .cc-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cc-label {
+            font-size: var(--t-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-3);
+        }
+
+        .cc-val {
+            font-size: var(--t-sm);
+            font-weight: 600;
+            color: var(--ink-1);
+        }
+
+        .cc-price {
+            font-size: var(--t-xl);
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress" id="progress"></div>
+    <div class="logo-mark">Oral<span>tec</span></div>
+
+    <nav class="nav-dots" id="navDots">
+        <button class="nav-dot active" onclick="go(0)" aria-label="Slide 1"></button>
+        <button class="nav-dot" onclick="go(1)" aria-label="Slide 2"></button>
+        <button class="nav-dot" onclick="go(2)" aria-label="Slide 3"></button>
+        <button class="nav-dot" onclick="go(3)" aria-label="Slide 4"></button>
+        <button class="nav-dot" onclick="go(4)" aria-label="Slide 5"></button>
+        <button class="nav-dot" onclick="go(5)" aria-label="Slide 6"></button>
+        <button class="nav-dot" onclick="go(6)" aria-label="Slide 7"></button>
+    </nav>
+    <div class="counter" id="counter">01 / 07</div>
+
+    <!-- ═══ SLIDE 1: HERO ═══ -->
+    <section class="slide" id="s0">
+        <div class="s1-left">
+            <span class="eyebrow">Orthodontie Antwerpen · 2025</span>
+            <div class="accent-bar"></div>
+            <h1 class="headline">De nieuwe standaard in alignerzorg.</h1>
+            <p class="body">
+                Oraltec brengt klinische hygiëne naar de badkamer van uw patiënt,
+                zodat de zorgkwaliteit niet stopt zodra ze uw praktijk verlaten.
+            </p>
+            <div class="s1-tag">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                    <circle cx="6.5" cy="6.5" r="5.5" stroke="#5409FF" stroke-width="1.5" />
+                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Premium zorg voor een premium behandeling
+            </div>
+        </div>
+        <div class="s1-right">
+            <div class="device-box">
+                <div class="d-icon">
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 5C18 5 10 11 10 18C10 25 18 31 18 31" stroke="white" stroke-width="2.2" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M18 5C18 5 26 11 26 18C26 25 18 31 18 31" stroke="white" stroke-width="2.2" fill="none"
+                            stroke-linecap="round" />
+                        <circle cx="18" cy="18" r="3.5" fill="white" />
+                        <path d="M5 13C5 13 2.5 15.2 2.5 18C2.5 20.8 5 23 5 23" stroke="white" stroke-width="1.8"
+                            fill="none" stroke-linecap="round" opacity=".55" />
+                        <path d="M31 13C31 13 33.5 15.2 33.5 18C33.5 20.8 31 23 31 23" stroke="white" stroke-width="1.8"
+                            fill="none" stroke-linecap="round" opacity=".55" />
+                    </svg>
+                </div>
+                <span class="d-name">Oraltec One</span>
+                <span class="d-sub">45 kHz ultrasoon · UV-C · 5 min</span>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">01</div>
+    </section>
+
+    <!-- ═══ SLIDE 2: PROBLEEM ═══ -->
+    <section class="slide" id="s1">
+        <div class="s2-head">
+            <span class="eyebrow">Het probleem</span>
+            <div class="accent-bar" style="margin-top:12px;"></div>
+            <h2 class="subhead">Niemand wil een vieze aligner in zijn mond stoppen</h2>
+        </div>
+        <div class="s2-cards">
+            <div class="prob-card hl">
+                <div class="top-line"></div>
+                <span class="pnum">Geur &amp; smaak</span>
+                <span class="ptitle">De grootste klacht van patiënten</span>
+                <span class="psub">Speeksel en voedselresten hopen zich op op het plastic. Een vieze geur of smaak zorgt
+                    ervoor dat patiënten de aligner minder dragen.</span>
+            </div>
+            <div class="prob-card">
+                <div class="top-line"></div>
+                <span class="pnum">Verkleuring</span>
+                <span class="ptitle">Zichtbaar en niet te verbergen</span>
+                <span class="psub">Verkeerde reiniging met een tandenborstel of agressieve zeep maakt het plastic dof en
+                    poreus. Bacteriën nestelen zich permanent in de micro-krassen.</span>
+            </div>
+            <div class="prob-card">
+                <div class="top-line"></div>
+                <span class="pnum">Tandvlees</span>
+                <span class="ptitle">Roodheid en irritatie</span>
+                <span class="psub">Bacteriële biofilm tussen aligner en gebit verhoogt het risico op ontsteking van het
+                    tandvlees. Een direct gevolg van slechte dagelijkse hygiëne.</span>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">02</div>
+    </section>
+
+    <!-- ═══ SLIDE 3: OPLOSSING ═══ -->
+    <section class="slide" id="s2">
+        <div class="s3-left">
+            <span class="eyebrow">De oplossing</span>
+            <div class="accent-bar"></div>
+            <h2 class="subhead">Klinische reiniging, toegankelijk voor thuis</h2>
+            <p class="body">
+                Oraltec One combineert 45 kHz ultrasone trillingen met UV-C desinfectie.
+                Vijf minuten. 99,9% van de bacteriën verdwenen. Geen krassen, geen slijtage.
+            </p>
+            <div class="tech-badge">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                    <circle cx="6.5" cy="6.5" r="5.5" stroke="#5409FF" stroke-width="1.5" />
+                    <path d="M4 6.5L5.8 8.5L9 4.5" stroke="#5409FF" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                CE-gecertificeerd · klinisch getest
+            </div>
+        </div>
+        <div class="s3-right">
+            <div class="how-step active">
+                <span class="snum">1</span>
+                <div class="stxt">
+                    <span class="stitle">Aligner in het apparaat</span>
+                    <span class="sdesc">Patiënt legt de aligner in het waterreservoir. Geen tabletten of extra middelen
+                        nodig.</span>
+                </div>
+            </div>
+            <div class="how-step">
+                <span class="snum">2</span>
+                <div class="stxt">
+                    <span class="stitle">5 minuten ultrasoon en UV-C</span>
+                    <span class="sdesc">45.000 Hz trillingen breken biofilm los, UV-C elimineert 99,9% van de
+                        bacteriën</span>
+                </div>
+            </div>
+            <div class="how-step">
+                <span class="snum">3</span>
+                <div class="stxt">
+                    <span class="stitle">Klinisch schoon resultaat</span>
+                    <span class="sdesc">Geen geur, geen verkleuring. De patiënt draagt de aligner graag en de compliance
+                        stijgt vanzelf.</span>
+                </div>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">03</div>
+    </section>
+
+    <!-- ═══ SLIDE 4: VOOR UW PRAKTIJK ═══ -->
+    <section class="slide" id="s3" style="align-content:start; padding-top:var(--safe);">
+        <div class="s4-head">
+            <span class="eyebrow">Voor uw praktijk</span>
+            <div class="accent-bar" style="margin-top:12px;"></div>
+            <h2 class="subhead">Een behandeling van €3.000 verdient goede nazorg.</h2>
+        </div>
+        <div class="s4-grid">
+            <div class="bc-cell" data-tier="Starter">
+                <span class="bnum">€ 54,60</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">50 tot 150 stuks</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 23,87 per
+                        unit</strong></span>
+            </div>
+            <div class="bc-cell" data-tier="Partner">
+                <span class="bnum">€ 51,85</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">151 tot 350 stuks · 5% korting</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 26,62 per
+                        unit</strong></span>
+            </div>
+            <div class="bc-cell featured" data-tier="Exclusive">
+                <span class="bnum">€ 49,15</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">351 stuks of meer · 10% korting</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 29,32 per
+                        unit</strong></span>
+            </div>
+        </div>
+        <div class="s4-foot">
+            <div class="i-badge">i</div>
+            <p class="body" style="font-size:var(--t-sm); max-width:65ch;">
+                De marge is een bijproduct. Het echte argument is dat u uw patiënten iets geeft
+                wat bij de behandeling past. Adviesverkoopprijs <strong>€ 94,95 incl. BTW</strong>.
+                U bepaalt zelf wat u vraagt.
+            </p>
+        </div>
+        <div class="wm" aria-hidden="true">04</div>
+    </section>
+
+    <!-- ═══ SLIDE 4: PAKKET ═══ -->
+    <section class="slide" id="s3">
+        <div class="s5-left">
+            <span class="eyebrow">Patiëntenuitrusting</span>
+            <div class="accent-bar"></div>
+            <h2 class="subhead">Geen bijzaak, maar een visitekaartje</h2>
+            <p class="body">
+                U overhandigt de patiënt een compleet, hoogwaardig pakket.
+                Elk onderdeel weerspiegelt de zorgstandaard van uw praktijk,
+                zonder extra stoeltijd of uitleg van uw team.
+            </p>
+        </div>
+        <div class="s5-right">
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Oraltec One ultrasone reinigingsunit</span>
+            </div>
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Luxe draagtas</span>
+            </div>
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Instructieflyer &amp; Quick Start Guide</span>
+            </div>
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Specialistische reinigingstabletten</span>
+            </div>
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Voedingsadapter</span>
+            </div>
+            <div class="pkg-row">
+                <div class="check"><svg viewBox="0 0 10 8">
+                        <polyline points="1,4 4,7 9,1" />
+                    </svg></div>
+                <span class="pkg-text">Garantiebewijs · 2 jaar omruilgarantie</span>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">04</div>
+    </section>
+
+    <!-- ═══ SLIDE 5: SAMENWERKING ═══ -->
+    <section class="slide" id="s4">
+        <div class="s6-left">
+            <span class="eyebrow">Samenwerking</span>
+            <div class="accent-bar"></div>
+            <h2 class="subhead">U helpt de patiënt buiten de deur.</h2>
+            <p class="body">
+                Tijdens de eerste alignerplaatsing introduceert uw assistent de Oraltec One
+                als de standaard voor dagelijkse hygiëne. De patiënt vindt alle instructie in de box.
+                Geen extra stoeltijd. Geen uitleg. Gewoon goede zorg.
+            </p>
+        </div>
+        <div class="s6-right">
+            <div class="workflow-block">
+                <span class="wf-title">Wat u ontvangt als partner</span>
+                <div class="incl-list" style="margin-top:var(--sp-1);">
+                    <div class="incl-row">
+                        <div class="check"><svg viewBox="0 0 10 8">
+                                <polyline points="1,4 4,7 9,1" />
+                            </svg></div>
+                        <span class="incl-text">Gratis demo-unit zodat u het zelf ervaart voor de eerste order</span>
+                    </div>
+                    <div class="incl-row">
+                        <div class="check"><svg viewBox="0 0 10 8">
+                                <polyline points="1,4 4,7 9,1" />
+                            </svg></div>
+                        <span class="incl-text">Wachtkamerbrochures en digitale content voor uw praktijk</span>
+                    </div>
+                    <div class="incl-row">
+                        <div class="check"><svg viewBox="0 0 10 8">
+                                <polyline points="1,4 4,7 9,1" />
+                            </svg></div>
+                        <span class="incl-text">Patiëntfolders op maat in het Nederlands en Frans</span>
+                    </div>
+                    <div class="incl-row">
+                        <div class="check"><svg viewBox="0 0 10 8">
+                                <polyline points="1,4 4,7 9,1" />
+                            </svg></div>
+                        <span class="incl-text">Vast aanspreekpunt bij Oraltec voor support en voorraad</span>
+                    </div>
+                    <div class="incl-row">
+                        <div class="check"><svg viewBox="0 0 10 8">
+                                <polyline points="1,4 4,7 9,1" />
+                            </svg></div>
+                        <span class="incl-text">Units volledig geassembleerd geleverd en direct klaar voor
+                            uitgifte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">05</div>
+    </section>
+
+    <!-- ═══ SLIDE 6: NEXT STEP ═══ -->
+    <section class="slide" id="s5">
+        <div class="s7-left">
+            <div>
+                <span class="eyebrow">Volgende stap</span>
+                <div class="accent-bar" style="margin-top:12px;"></div>
+                <h2 class="headline" style="font-size:var(--t-3xl);">Laten we vandaag starten.</h2>
+            </div>
+            <div class="next-steps">
+                <div class="next-row primary">
+                    <span class="nnum">→</span>
+                    <div>
+                        <div class="ntxt">Demo live bekijken</div>
+                        <div class="nsub">Ik laat het apparaat nu zien. 5 minuten en u ziet het resultaat.</div>
+                    </div>
+                </div>
+                <div class="next-row">
+                    <span class="nnum">2</span>
+                    <div>
+                        <div class="ntxt">Demo-unit meegeven</div>
+                        <div class="nsub">U houdt de unit 2 weken om zelf te testen in uw praktijk.</div>
+                    </div>
+                </div>
+                <div class="next-row">
+                    <span class="nnum">3</span>
+                    <div>
+                        <div class="ntxt">Eerste order plaatsen</div>
+                        <div class="nsub">Geen minimale afname. U start op uw eigen tempo.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-card">
+            <div class="cc-row">
+                <span class="cc-label">Contactpersoon</span>
+                <span class="cc-val">Lucas Pepermans</span>
+            </div>
+            <div class="cc-row">
+                <span class="cc-label">Telefoon</span>
+                <span class="cc-val">+31 6 40 08 91 21</span>
+            </div>
+            <div class="cc-row">
+                <span class="cc-label">E-mail</span>
+                <span class="cc-val">lucas@oraltec.nl</span>
+            </div>
+            <div class="cc-row">
+                <span class="cc-label">Website</span>
+                <span class="cc-val">www.oraltec.nl</span>
+            </div>
+            <div class="cc-row"
+                style="border-top:1px solid var(--border); padding-top:var(--sp-3); margin-top:var(--sp-1);">
+                <span class="cc-label">Inkoopprijs vanaf</span>
+                <span class="cc-price">€ 54,60</span>
+            </div>
+        </div>
+        <div class="wm" aria-hidden="true">06</div>
+    </section>
+
+    <!-- ═══ SLIDE 7: PRIJZEN ═══ -->
+    <section class="slide" id="s6" style="align-content:start; padding-top:var(--safe);">
+        <div class="s4-head">
+            <span class="eyebrow">Investering</span>
+            <div class="accent-bar" style="margin-top:12px;"></div>
+            <h2 class="subhead">Een behandeling van €3.000 verdient goede nazorg.</h2>
+        </div>
+        <div class="s4-grid">
+            <div class="bc-cell" data-tier="Starter">
+                <span class="bnum">€ 54,60</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">50 tot 150 stuks</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 23,87 per
+                        unit</strong></span>
+            </div>
+            <div class="bc-cell" data-tier="Partner">
+                <span class="bnum">€ 51,85</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">151 tot 350 stuks · 5% korting</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 26,62 per
+                        unit</strong></span>
+            </div>
+            <div class="bc-cell featured" data-tier="Exclusive">
+                <span class="bnum">€ 49,15</span>
+                <span class="blab">Inkoopprijs per unit</span>
+                <span class="bnote">351 stuks of meer · 10% korting</span>
+                <span class="bnote" style="margin-top:var(--sp-2); color:var(--ink-2);">Marge: <strong>€ 29,32 per
+                        unit</strong></span>
+            </div>
+        </div>
+        <div class="s4-foot">
+            <div class="i-badge">i</div>
+            <p class="body" style="font-size:var(--t-sm); max-width:65ch;">
+                De marge is een bijproduct. Het echte argument is dat u uw patiënten iets geeft
+                wat bij de behandeling past. Adviesverkoopprijs <strong>€ 94,95 incl. BTW</strong>.
+                U bepaalt zelf wat u vraagt.
+            </p>
+        </div>
+        <div class="wm" aria-hidden="true">07</div>
+    </section>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const ctr = document.getElementById('counter');
+        const bar = document.getElementById('progress');
+        const N = slides.length;
+        let cur = 0;
+        function pad(n) { return String(n).padStart(2, '0'); }
+        function ui(i) {
+            cur = i;
+            dots.forEach((d, j) => d.classList.toggle('active', j === i));
+            ctr.textContent = `${pad(i + 1)} / ${pad(N)}`;
+            bar.style.width = `${(i + 1) / N * 100}%`;
+        }
+        function go(i) {
+            if (i < 0 || i >= N) return;
+            slides[i].scrollIntoView({ behavior: 'smooth' });
+            ui(i);
+        }
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting && e.intersectionRatio >= 0.5)
+                    ui(Array.from(slides).indexOf(e.target));
+            });
+        }, { threshold: 0.5 });
+        slides.forEach(s => obs.observe(s));
+        document.addEventListener('keydown', e => {
+            if (['ArrowDown', 'ArrowRight', ' '].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+            if (['ArrowUp', 'ArrowLeft'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+        });
+        let ty = 0;
+        document.addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, { passive: true });
+        document.addEventListener('touchend', e => {
+            const d = ty - e.changedTouches[0].clientY;
+            if (Math.abs(d) > 40) go(d > 0 ? cur + 1 : cur - 1);
+        });
+        ui(0);
+    </script>
+</body>
+
+</html>
